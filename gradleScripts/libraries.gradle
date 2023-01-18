@@ -24,9 +24,9 @@ ext {
             hilt                    : "2.44"
     ]
 
-    appDependencies = [
-            hilt                        : "com.google.dagger:hilt-android:$verisons.hilt",
-            hiltAnnotationProcessor     : "com.google.dagger:hilt-compiler:$verisons.hilt",
+    deps = [
+            hilt                        : "com.google.dagger:hilt-android:$versions.hilt",
+            hiltAnnotationProcessor     : "com.google.dagger:hilt-compiler:$versions.hilt",
             coroutines                  : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",
             coroutinesAndroid           : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutinesAndroid",
             coreKtx                     : "androidx.core:core-ktx:$versions.coreCoroutinesKtx",
@@ -47,10 +47,10 @@ ext {
             logginInterceptor           : "com.squareup.okhttp3:logging-interceptor:$versions.loggingInterceptor",
             okhttp                      : "com.squareup.okhttp3:okhttp:$versions.okHttp",
             gsonConverter               : "com.squareup.retrofit2:converter-gson:$versions.gsonConverter",
-            viewModelLifecycle          : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
-            liveDataLifecycle           : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion",
-            lifecycleAnnotationProcessor: "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion",
-            processLifecycle            : "androidx.lifecycle:lifecycle-process:$lifecycleVersion"
+            viewModelLifecycle          : "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycleVersion",
+            liveDataLifecycle           : "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycleVersion",
+            lifecycleAnnotationProcessor: "androidx.lifecycle:lifecycle-compiler:$versions.lifecycleVersion",
+            processLifecycle            : "androidx.lifecycle:lifecycle-process:$versions.lifecycleVersion"
     ]
 
     testVersions = [
@@ -64,14 +64,14 @@ ext {
             truthAssertions       : '1.4.0',
             testRunner            : '1.4.0',
             testRule              : '1.4.0',
-            junitTestExtensions   : '1.1.3',
+            junitTestExtensions   : '1.1.3'
     ]
 
     testDependencies = [
             junit                  : "junit:junit:$testVersions.junit",
             androidJunit           : "androidx.test.ext:junit:$testVersions.androidJunit",
-            liveData               : "androidx.arch.core:core-testing:$archVersion",
-            lifecycleRuntime       : "androidx.lifecycle:lifecycle-runtime-testing:$lifecycleVersion",
+            liveData               : "androidx.arch.core:core-testing:$versions.archVersion",
+            lifecycleRuntime       : "androidx.lifecycle:lifecycle-runtime-testing:$versions.lifecycleVersion",
             mockitoCore            : "org.mockito:mockito-core:$testVersions.mockitoVersion",
             mockitoAndroid         : "org.mockito:mockito-android:$testVersions.mockitoVersion",
             mockWebServer          : "com.squareup.okhttp3:mockwebserver:$testVersions.mockWebServer",

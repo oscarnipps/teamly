@@ -1,11 +1,16 @@
+
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
+
+apply from: "$rootProject.projectDir/gradleScripts/libraries.gradle"
 
 android {
     namespace 'com.app.teamly'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.app.teamly"
@@ -33,7 +38,8 @@ android {
 }
 
 dependencies {
-
+    implementation deps.hilt
+    kapt deps.hiltAnnotationProcessor
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.0'
     implementation 'com.google.android.material:material:1.7.0'
@@ -42,3 +48,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes true
+}
+
