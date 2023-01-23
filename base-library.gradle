@@ -1,0 +1,154 @@
+apply from: "$rootProject.projectDir/libraries.gradle"
+
+android {
+    namespace 'com.app.teamly'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.app.teamly"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+
+dependencies {
+    //hilt
+    implementation deps.hilt
+    kapt deps.hiltAnnotationProcessor
+
+    //coroutines
+    implementation deps.coroutines
+    implementation deps.coroutinesAndroid
+
+    //constraintLayout
+    implementation deps.constraintLayout
+
+    //app compat
+    implementation deps.appCompat
+
+    //kotlin core ext
+    implementation deps.coreKtx
+
+    //material
+    implementation deps.material
+
+    //timber
+    implementation deps.timber
+
+    //recyclerview
+    implementation deps.recyclerview
+
+    //card view
+    implementation deps.cardView
+
+    implementation deps.glide
+    kapt deps.glideAnnotationProcessor
+
+    //fragment
+    implementation deps.fragment
+
+    // navigation
+    implementation deps.navigationComponent
+    implementation deps.navigationUI
+
+    //lifecycle service
+    implementation deps.serviceLifecycle
+
+    //lifecycle common
+    implementation deps.lifecycleCommon
+
+    //lifecycle saved state module for ViewModel
+    implementation deps.viewModelSavedState
+
+    //lifecycles only (without ViewModel or LiveData)
+    implementation deps.lifecycleOnly
+
+    //lifecycle process (provides a lifecycle for the whole application process)
+    implementation deps.processLifecycle
+
+    //lifecycle liveData
+    implementation deps.liveDataLifecycle
+
+    //lifecycle viewModel
+    implementation deps.viewModelLifecycle
+
+
+//////////////testing//////////////
+    //mockito
+    testImplementation testDependencies.mockitoCore
+    androidTestImplementation testDependencies.mockitoAndroid
+
+    //Mock Web Server
+    testImplementation testDependencies.mockWebServer
+
+    //fragments
+    debugImplementation(testDependencies.fragments) {
+        exclude group: "androidx.test", module: "core"
+    }
+
+    // navigation
+    androidTestImplementation testDependencies.navigation
+
+    // room
+    testImplementation testDependencies.room
+
+    //hilt
+    testImplementation testDependencies.hilt
+    kaptTest testDependencies.hiltAnnotationProcessor
+
+    //hilt instrumentation tests.
+    androidTestImplementation testDependencies.hilt
+    kaptAndroidTest testDependencies.hiltAnnotationProcessor
+
+    // espresso
+    androidTestImplementation testDependencies.espressoCore
+    androidTestImplementation testDependencies.espressoIntent
+    androidTestImplementation testDependencies.espressoIdlingResource
+
+    // Core library
+    androidTestImplementation testDependencies.androidTestCore
+    testImplementation testDependencies.archTestCore
+    androidTestImplementation testDependencies.archTestCore
+
+    // AndroidJUnitRunner and JUnit Rules
+    androidTestImplementation testDependencies.testRunner
+    androidTestImplementation testDependencies.testRule
+    testImplementation testDependencies.testRunner
+    testImplementation testDependencies.testRule
+    testImplementation testDependencies.junit
+
+    // Assertions
+    androidTestImplementation testDependencies.junitTestExtensions
+    androidTestImplementation testDependencies.truthAssertions
+///////////////////////testing////////////////////
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes true
+}
