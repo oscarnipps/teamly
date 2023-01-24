@@ -5,9 +5,10 @@ plugins {
     id 'com.google.dagger.hilt.android'
 }
 
-apply from: "$rootProject.projectDir/base-library.gradle"
+apply from: "$rootProject.projectDir/app/base-library.gradle"
 
 dependencies {
     //declare module dependencies if needed
+    implementation project(":members-presentation")
 }
 

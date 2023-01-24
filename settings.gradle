@@ -16,3 +16,12 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Teamly"
 include ':app'
+include ':members-presentation'
+include ':teams-presentation'
+include ':settings-presentation'
+include ':members-domain'
+include ':teams-domain'
+include ':settings-domain'
+include ':members-data'
+include ':teams-data'
+include ':settings-data'

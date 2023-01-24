@@ -12,6 +12,15 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/members-data" />
+            <option value="$PROJECT_DIR$/members-domain" />
+            <option value="$PROJECT_DIR$/members-presentation" />
+            <option value="$PROJECT_DIR$/settings-data" />
+            <option value="$PROJECT_DIR$/settings-domain" />
+            <option value="$PROJECT_DIR$/settings-presentation" />
+            <option value="$PROJECT_DIR$/teams-data" />
+            <option value="$PROJECT_DIR$/teams-domain" />
+            <option value="$PROJECT_DIR$/teams-presentation" />
           </set>
         </option>
       </GradleProjectSettings>
