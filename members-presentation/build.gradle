@@ -9,5 +9,5 @@ plugins {
 apply from: "$rootProject.projectDir/app/base-library.gradle"
 
 dependencies {
-
+    
 }

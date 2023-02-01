@@ -104,6 +104,9 @@ dependencies {
     //Mock Web Server
     testImplementation testDependencies.mockWebServer
 
+    //coroutines
+    testImplementation testDependencies.coroutinesTest
+
     //fragments
     debugImplementation(testDependencies.fragments) {
         exclude group: "androidx.test", module: "core"

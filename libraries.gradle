@@ -12,7 +12,7 @@ ext {
             glide                   : '4.11.0',
             glideAnnotationProcessor: '4.10.0',
             timber                  : '4.7.1',
-            room                    : '2.5.0',
+            roomVersion             : '2.5.0',
             navVersion              : '2.5.3',
             fragmentVersion         : '1.5.5',
             retrofit                : '2.5.0',
@@ -39,6 +39,7 @@ ext {
             glideAnnotationProcessor: "com.github.bumptech.glide:compiler:$versions.glideAnnotationProcessor",
             timber                  : "com.jakewharton.timber:timber:$versions.timber",
             room                    : "androidx.room:room-runtime:$versions.roomVersion",
+            roomKtx                 : "androidx.room:room-ktx:$versions.roomVersion",
             roomAnnotationProcessor : "androidx.room:room-compiler:$versions.roomVersion",
             navigationComponent     : "androidx.navigation:navigation-fragment-ktx:$versions.navVersion",
             navigationUI            : "androidx.navigation:navigation-ui-ktx:$versions.navVersion",
@@ -73,6 +74,7 @@ ext {
     ]
 
     testDependencies = [
+            coroutinesTest         : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.coroutines",
             androidTestCore        : "androidx.test:core:$testVersions.androidTestCore",
             archTestCore           : "androidx.arch.core:core-testing:$testVersions.archTestCore",
             junit                  : "junit:junit:$testVersions.junit",
@@ -84,7 +86,7 @@ ext {
             mockWebServer          : "com.squareup.okhttp3:mockwebserver:$testVersions.mockWebServer",
             fragments              : "androidx.fragment:fragment-testing:$versions.fragmentVersion",
             navigation             : "androidx.navigation:navigation-testing:$versions.navVersion",
-            room                   : "androidx.room:room-testing:$versions.room",
+            room                   : "androidx.room:room-testing:$versions.roomVersion",
             hilt                   : "com.google.dagger:hilt-android-testing:$versions.hilt",  //use for both testImplementation and androidTestImplementation dependencies declaration
             hiltAnnotationProcessor: "com.google.dagger:hilt-android-compiler:$versions.hilt", //use for both kaptTest and kaptAndroidTest dependencies declaration,
             espressoCore           : "androidx.test.espresso:espresso-core:$testVersions.espressoCore",
