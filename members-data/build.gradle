@@ -12,4 +12,6 @@ dependencies {
     implementation deps.logginInterceptor
     implementation deps.gsonConverter
     implementation deps.retrofit
+    implementation project(":database")
+    implementation project(":members-domain")
 }

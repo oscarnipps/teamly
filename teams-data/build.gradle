@@ -8,8 +8,7 @@ plugins {
 apply from: "$rootProject.projectDir/app/base-library.gradle"
 
 dependencies {
-    implementation deps.room
-    implementation deps.roomKtx
-    kapt deps.roomAnnotationProcessor
+    implementation project(":database")
+    implementation project(":teams-domain")
 
 }
