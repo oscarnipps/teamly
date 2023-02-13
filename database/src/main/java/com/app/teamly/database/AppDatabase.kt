@@ -2,9 +2,11 @@ package com.app.teamly.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.app.teamly.database.members.MemberEntity
+import com.app.teamly.database.members.dao.MemberDao
+import com.app.teamly.database.members.entity.MemberEntity
 import com.app.teamly.database.relations.MemberTeamEntity
-import com.app.teamly.database.teams.TeamsEntity
+import com.app.teamly.database.teams.dao.TeamsDao
+import com.app.teamly.database.teams.entity.TeamsEntity
 
 @Database(
     entities = [
@@ -17,5 +19,7 @@ import com.app.teamly.database.teams.TeamsEntity
 )
 abstract class AppDatabase : RoomDatabase() {
 
-    //todo: declare the respective abstract dao's here
+    //declare required dao's
+    abstract fun memberDao() : MemberDao
+    abstract fun teamsDao() : TeamsDao
 }

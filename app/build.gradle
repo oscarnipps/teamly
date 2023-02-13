@@ -1,14 +1,22 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
+    id 'kotlin-kapt'
 }
 
 apply from: "$rootProject.projectDir/app/base-library.gradle"
 
+android {
+    namespace 'com.app.teamly'
+}
+
 dependencies {
     //declare module dependencies if needed
     implementation project(":members-presentation")
+    implementation project(":members-domain")
+    implementation project(":members-data")
+    implementation project(":teams-domain")
+    implementation project(":teams-data")
 }
 

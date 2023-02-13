@@ -1,4 +1,4 @@
-package com.app.teamly.database.members
+package com.app.teamly.database.members.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

@@ -1,7 +1,8 @@
 ext {
 
     versions = [
-            coroutines              : '1.3.5',
+            coroutines              : '1.6.4',
+            kotlinStdLib            : '1.7.20',
             coroutinesAndroid       : '1.3.5',
             coreCoroutinesKtx       : '1.9.0',
             appCompat               : '1.6.0',
@@ -15,7 +16,7 @@ ext {
             roomVersion             : '2.5.0',
             navVersion              : '2.5.3',
             fragmentVersion         : '1.5.5',
-            retrofit                : '2.5.0',
+            retrofit                : '2.6.0',
             okHttp                  : '4.9.1',
             loggingInterceptor      : '4.9.0',
             gsonConverter           : '2.5.0',
@@ -30,6 +31,7 @@ ext {
             coroutines              : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",
             coroutinesAndroid       : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutinesAndroid",
             coreKtx                 : "androidx.core:core-ktx:$versions.coreCoroutinesKtx",
+            kotlinStdLib            : "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlinStdLib",
             appCompat               : "androidx.appcompat:appcompat:$versions.appCompat",
             material                : "com.google.android.material:material:$versions.material",
             constraintLayout        : "androidx.constraintlayout:constraintlayout:$versions.constraintLayout",
@@ -40,6 +42,7 @@ ext {
             timber                  : "com.jakewharton.timber:timber:$versions.timber",
             room                    : "androidx.room:room-runtime:$versions.roomVersion",
             roomKtx                 : "androidx.room:room-ktx:$versions.roomVersion",
+            roomCommon              : "androidx.room:room-common:$versions.roomVersion",
             roomAnnotationProcessor : "androidx.room:room-compiler:$versions.roomVersion",
             navigationComponent     : "androidx.navigation:navigation-fragment-ktx:$versions.navVersion",
             navigationUI            : "androidx.navigation:navigation-ui-ktx:$versions.navVersion",

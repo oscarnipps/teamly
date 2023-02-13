@@ -1,0 +1,15 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+apply from: "$rootProject.projectDir/app/base-library.gradle"
+
+dependencies {
+    api deps.okhttp
+    api deps.logginInterceptor
+    api deps.gsonConverter
+    api deps.retrofit
+}

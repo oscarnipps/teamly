@@ -7,8 +7,13 @@ plugins {
 
 apply from: "$rootProject.projectDir/app/base-library.gradle"
 
+android {
+    namespace 'com.app.teamly.database'
+}
+
 dependencies {
-    implementation deps.room
-    implementation deps.roomKtx
+    api deps.room
+    api deps.roomKtx
+    api deps.roomCommon
     kapt deps.roomAnnotationProcessor
 }

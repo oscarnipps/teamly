@@ -8,6 +8,7 @@
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleHome" value="/usr/local/Cellar/gradle/7.4/libexec" />
+        <option name="gradleJvm" value="Embedded JDK" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
@@ -16,6 +17,7 @@
             <option value="$PROJECT_DIR$/members-data" />
             <option value="$PROJECT_DIR$/members-domain" />
             <option value="$PROJECT_DIR$/members-presentation" />
+            <option value="$PROJECT_DIR$/network" />
             <option value="$PROJECT_DIR$/settings-data" />
             <option value="$PROJECT_DIR$/settings-domain" />
             <option value="$PROJECT_DIR$/settings-presentation" />

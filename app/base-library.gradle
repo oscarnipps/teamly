@@ -52,6 +52,9 @@ dependencies {
     //kotlin core ext
     implementation deps.coreKtx
 
+    //kotlin std lib
+    implementation deps.kotlinStdLib
+
     //material
     implementation deps.material
 
@@ -64,6 +67,7 @@ dependencies {
     //card view
     implementation deps.cardView
 
+    //glide
     implementation deps.glide
     kapt deps.glideAnnotationProcessor
 

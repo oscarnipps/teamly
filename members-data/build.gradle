@@ -7,11 +7,12 @@ plugins {
 
 apply from: "$rootProject.projectDir/app/base-library.gradle"
 
+android {
+    namespace 'com.app.teamly.members_data'
+}
+
 dependencies {
-    implementation deps.okhttp
-    implementation deps.logginInterceptor
-    implementation deps.gsonConverter
-    implementation deps.retrofit
-    implementation project(":database")
     implementation project(":members-domain")
+    implementation project(":database")
+    implementation project(":network")
 }

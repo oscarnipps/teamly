@@ -1,7 +1,7 @@
 package com.app.members
 
 import androidx.fragment.app.Fragment
-import com.app.teamly.R
+import com.app.teamly.members_presentation.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
