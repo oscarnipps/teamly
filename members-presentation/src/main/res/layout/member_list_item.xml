@@ -46,11 +46,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:drawableStart="@drawable/ic_member_teams"
+                android:gravity="center"
                 android:drawablePadding="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/memberImage"
                 app:layout_constraintTop_toBottomOf="@+id/member_email"
-                tools:text="july 23 - july 26" />
+                tools:text="0" />
 
             <TextView
                 android:id="@+id/event_volunteer_status"

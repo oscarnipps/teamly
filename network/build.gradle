@@ -7,6 +7,11 @@ plugins {
 
 apply from: "$rootProject.projectDir/app/base-library.gradle"
 
+
+android {
+    namespace 'com.app.teamly.network'
+}
+
 dependencies {
     api deps.okhttp
     api deps.logginInterceptor

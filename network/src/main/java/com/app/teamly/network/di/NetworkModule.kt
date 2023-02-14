@@ -1,6 +1,6 @@
 package com.app.teamly.network.di
 
-import com.app.teamly.BuildConfig
+import com.app.teamly.network.BuildConfig
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
