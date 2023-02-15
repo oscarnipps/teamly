@@ -39,19 +39,19 @@ class MembersListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        membersAdapter = MemberListAdapter()
 
         val recyclerView = binding.rvMember
+
+        recyclerView.apply {
+            adapter = membersAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
 
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED){
                 memberViewModel.memberState.collectLatest { memberItem ->
-                    membersAdapter = MemberListAdapter(memberItem.members)
-
-                    recyclerView.apply {
-                         adapter = membersAdapter
-                        layoutManager = LinearLayoutManager(requireContext())
-                    }
-
+                    membersAdapter.setMembers(memberItem.members)
                 }
             }
         }
