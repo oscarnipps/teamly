@@ -3,10 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="member"
+            type="com.app.members_domain.model.Member" />
+
+    </data>
+
     <androidx.cardview.widget.CardView
         app:cardElevation="8dp"
         app:cardCornerRadius="8dp"
-        android:layout_margin="16dp"
+        android:layout_margin="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -14,14 +22,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <!--todo: change style and hardcoded value (use constraints to set value)-->
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/memberImage"
+                app:circularflow_radiusInDP="12dp"
+                app:circularflow_defaultRadius="12dp"
                 android:layout_width="52dp"
                 android:layout_height="52dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginBottom="32dp"
                 android:scaleType="centerCrop"
+                app:shapeAppearance="@style/circle"
                 android:src="@drawable/member"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -37,6 +49,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/member_email"
                 app:layout_constraintStart_toEndOf="@+id/memberImage"
                 app:layout_constraintTop_toTopOf="parent"
+                android:text="@{member.name}"
                 app:layout_constraintVertical_chainStyle="packed"
                 tools:text="Ever Green Outreach" />
 
@@ -54,30 +67,13 @@
                 tools:text="0" />
 
             <TextView
-                android:id="@+id/event_volunteer_status"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
-                android:drawablePadding="8dp"
-                android:gravity="center_vertical"
-                android:textAppearance="?attr/textAppearanceSubtitle2"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:text="verifying" />
-
-            <TextView
                 android:id="@+id/member_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="8dp"
                 android:gravity="center_vertical"
+                android:text="@{member.email}"
                 app:layout_constraintBottom_toTopOf="@+id/teams_count"
                 app:layout_constraintStart_toEndOf="@+id/memberImage"
                 app:layout_constraintTop_toBottomOf="@+id/member_name"

@@ -1,19 +1,19 @@
 package com.app.members
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.app.members_domain.model.Member
 import com.app.teamly.members_presentation.R
 import com.app.teamly.members_presentation.databinding.MemberListItemBinding
 import com.bumptech.glide.Glide
 
-class MemberListAdapter() : RecyclerView.Adapter<MemberListAdapter.MemberListViewHolder>() {
-
-    private var membersList = emptyList<Member>()
+class MemberListAdapter(val memberItemListener: MemberItemListener) :
+    ListAdapter<Member, MemberListAdapter.MemberListViewHolder>(MemberListItemDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemberListViewHolder {
         val binding: MemberListItemBinding = DataBindingUtil.inflate(
@@ -27,39 +27,50 @@ class MemberListAdapter() : RecyclerView.Adapter<MemberListAdapter.MemberListVie
     }
 
     override fun onBindViewHolder(holder: MemberListViewHolder, position: Int) {
-        val currentMember = membersList[position]
+        val currentMember = getItem(position)
         holder.bindMember(currentMember)
     }
 
-    override fun getItemCount(): Int {
-        return membersList.size
+    interface MemberItemListener {
+        fun onMemberItemClicked(currentItem: Member)
+    }
+
+    private class MemberListItemDiffCallback : DiffUtil.ItemCallback<Member>() {
+        override fun areItemsTheSame(oldItem: Member, newItem: Member): Boolean {
+            return oldItem.email == newItem.email
+        }
+
+        override fun areContentsTheSame(oldItem: Member, newItem: Member): Boolean {
+            return oldItem == newItem
+        }
     }
 
     inner class MemberListViewHolder(private val itemBinding: MemberListItemBinding) :
-        ViewHolder(itemBinding.root) {
+        ViewHolder(itemBinding.root) , View.OnClickListener {
+
+        init {
+            itemView.setOnClickListener(this)
+        }
 
         fun bindMember(member: Member) {
-            itemBinding.memberName.text = member.name
+            itemBinding.member = member
 
-            itemBinding.memberEmail.text = member.email
-
-            itemBinding.teamsCount.text = member.teamsCount.toString()
+            itemBinding.executePendingBindings()
 
             //todo: change to use binding adapter
             Glide.with(itemView.context)
                 .load(member.imageUrl)
-                .into(itemBinding.memberImage);
+                .into(itemBinding.memberImage)
+
+            //todo: change to use binding adapter
+            itemBinding.teamsCount.text = member.teamsCount.toString()
+
         }
 
-    }
+        override fun onClick(p0: View?) {
+            val currentItem = getItem(bindingAdapterPosition)
+            memberItemListener.onMemberItemClicked(currentItem)
+        }
 
-    fun setMembers(newMemberList: List<Member>) {
-        val memberDiffUtil = MemberListDiffUtil(membersList ,newMemberList)
-
-        val diffResult = DiffUtil.calculateDiff(memberDiffUtil)
-
-        membersList = newMemberList
-
-        diffResult.dispatchUpdatesTo(this)
     }
 }
