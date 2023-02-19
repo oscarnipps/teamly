@@ -8,10 +8,7 @@ import com.app.members_domain.common.Resource
 import com.app.members_domain.model.Member
 import com.app.members_domain.usecase.GetMembersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
@@ -24,6 +21,9 @@ class MembersViewModel @Inject constructor(
     private val _memberState = MutableStateFlow(MemberListState())
     val memberState = _memberState.asStateFlow()
 
+    private val _memberUiEvent = MutableSharedFlow<UiEvent>()
+    val memberUiEvent = _memberUiEvent.asSharedFlow()
+
     init {
         getMembers()
     }
@@ -32,16 +32,21 @@ class MembersViewModel @Inject constructor(
         viewModelScope.launch {
 
             getMembersUseCase().collectLatest { item ->
-
                 when (item) {
+
                     is Resource.Error -> {
                         val message = item.message
+
                         Timber.d("error occurred with message $message")
 
+                        _memberState.value = memberState.value.copy(loading = false)
+
+                        _memberUiEvent.emit(UiEvent.ToastEvent(message ?: "error"))
                     }
 
                     is Resource.Loading -> {
                         Timber.d("loading members .....")
+                        _memberState.value = memberState.value.copy(loading = true)
                     }
 
 
@@ -49,7 +54,8 @@ class MembersViewModel @Inject constructor(
                         val memberList = item.data
                         Timber.d("members received with size : ${memberList?.size}")
                         _memberState.value = memberState.value.copy(
-                            members = item.data ?: emptyList()
+                            members = item.data ?: emptyList(),
+                            loading = false
                         )
                     }
                 }
@@ -59,5 +65,6 @@ class MembersViewModel @Inject constructor(
 }
 
 sealed class UiEvent {
-    data class ToastEvent(val message: String) : UiEvent()
+    //todo: add other ui events (i.e navigation)
+    data class ToastEvent(val message: String = "") : UiEvent()
 }

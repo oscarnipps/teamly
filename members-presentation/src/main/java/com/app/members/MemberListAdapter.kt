@@ -46,7 +46,7 @@ class MemberListAdapter(val memberItemListener: MemberItemListener) :
     }
 
     inner class MemberListViewHolder(private val itemBinding: MemberListItemBinding) :
-        ViewHolder(itemBinding.root) , View.OnClickListener {
+        ViewHolder(itemBinding.root), View.OnClickListener {
 
         init {
             itemView.setOnClickListener(this)
@@ -54,17 +54,7 @@ class MemberListAdapter(val memberItemListener: MemberItemListener) :
 
         fun bindMember(member: Member) {
             itemBinding.member = member
-
             itemBinding.executePendingBindings()
-
-            //todo: change to use binding adapter
-            Glide.with(itemView.context)
-                .load(member.imageUrl)
-                .into(itemBinding.memberImage)
-
-            //todo: change to use binding adapter
-            itemBinding.teamsCount.text = member.teamsCount.toString()
-
         }
 
         override fun onClick(p0: View?) {

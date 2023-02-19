@@ -19,11 +19,11 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MembersListFragment : Fragment() , MemberListAdapter.MemberItemListener{
+class MembersListFragment : Fragment(), MemberListAdapter.MemberItemListener {
 
-    private val memberViewModel : MembersViewModel by viewModels()
-    private lateinit var membersAdapter : MemberListAdapter
-    private lateinit var binding : FragmentMembersListBinding
+    private val memberViewModel: MembersViewModel by viewModels()
+    private lateinit var membersAdapter: MemberListAdapter
+    private lateinit var binding: FragmentMembersListBinding
 
 
     override fun onCreateView(
@@ -31,7 +31,8 @@ class MembersListFragment : Fragment() , MemberListAdapter.MemberItemListener{
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_members_list,container,false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_members_list, container, false)
         return binding.root
     }
 
@@ -42,16 +43,40 @@ class MembersListFragment : Fragment() , MemberListAdapter.MemberItemListener{
 
         binding.memberListAdapter = membersAdapter
 
+        collectUiState()
+
+        collectUiEvent()
+    }
+
+    private fun collectUiEvent() {
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED){
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                memberViewModel.memberUiEvent.collect { uiEvent ->
+                    when (uiEvent) {
+                        is UiEvent.ToastEvent -> {
+                            Toast.makeText(requireContext(), uiEvent.message, Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
+    private fun collectUiState() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
                 memberViewModel.memberState.collectLatest { memberItem ->
+                    binding.isLoading = memberItem.loading
                     membersAdapter.submitList(memberItem.members)
                 }
             }
         }
     }
 
+
     override fun onMemberItemClicked(currentItem: Member) {
-        Toast.makeText(requireContext(), "${currentItem.name} clicked" , Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), currentItem.name, Toast.LENGTH_SHORT).show()
     }
 }

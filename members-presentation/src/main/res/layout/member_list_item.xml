@@ -35,6 +35,7 @@
                 android:scaleType="centerCrop"
                 app:shapeAppearance="@style/circle"
                 android:src="@drawable/member"
+                setImage="@{member.imageUrl}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -60,6 +61,7 @@
                 android:layout_marginStart="16dp"
                 android:drawableStart="@drawable/ic_member_teams"
                 android:gravity="center"
+                teamCount="@{member.teamsCount}"
                 android:drawablePadding="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/memberImage"
