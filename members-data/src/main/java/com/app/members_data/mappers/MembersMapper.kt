@@ -23,7 +23,7 @@ class MembersMapper @Inject constructor() {
         return membersDto.memberDataDto.map { item ->
             MemberEntity(
                 item.id.toString(),
-                "${item.firstName} ${item.lastName} ",
+                "${item.firstName} ${item.lastName}",
                 item.email,
                 item.avatar
             )
