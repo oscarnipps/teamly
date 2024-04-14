@@ -1,9 +1,9 @@
 package com.app.members_data.di
 
 import com.app.members_data.api.MemberService
-import com.app.members_data.mappers.MembersMapper
 import com.app.members_data.repo.MembersRepoImpl
 import com.app.members_domain.repo.MembersRepo
+import com.app.members_data.usecase.GetMembersUseCaseImpl
 import com.app.members_domain.usecase.GetMembersUseCase
 import com.app.teamly.database.AppDatabase
 import com.app.teamly.database.members.dao.MemberDao
@@ -40,7 +40,7 @@ class MemberModule {
     @Provides
     @Singleton
     fun providesMemberUseCase (membersRepo: MembersRepo) : GetMembersUseCase {
-        return GetMembersUseCase(membersRepo)
+        return GetMembersUseCaseImpl(membersRepo)
     }
 
 }

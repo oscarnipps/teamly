@@ -1,11 +1,8 @@
 package com.app.members
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.app.members_domain.common.Resource
-import com.app.members_domain.model.Member
 import com.app.members_domain.usecase.GetMembersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
@@ -31,7 +28,7 @@ class MembersViewModel @Inject constructor(
     private fun getMembers() {
         viewModelScope.launch {
 
-            getMembersUseCase().collectLatest { item ->
+            getMembersUseCase.getMembers().collectLatest { item ->
                 when (item) {
 
                     is Resource.Error -> {

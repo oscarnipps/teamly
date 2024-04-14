@@ -2,8 +2,6 @@ package com.app.members_data.repo
 
 import com.app.members_data.api.MemberService
 import com.app.members_data.mappers.MembersMapper
-import com.app.members_data.models.MembersDto
-import com.app.teamly.database.members.MemberWithTeams
 import com.app.members_domain.common.Resource
 import com.app.members_domain.model.Member
 import com.app.members_domain.model.MemberDetails
